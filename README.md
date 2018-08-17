@@ -1,3 +1,4 @@
+![Output of DjangoWeb Project!](https://github.com/itsmanu4u/DjangoWeb/blob/master/snippet.png)
 
 ==============| # DjangoWeb (V.1) |==============
 
