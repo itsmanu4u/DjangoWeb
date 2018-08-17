@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My Django!</title>
+        <meta name="description" content="">
+
+       {% load staticfiles %}	
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	
+</head>
+
+<!--Full Screen Video, Menus and ScrollBar  Starts-->
+
+
+
+	<style>
+			a.ex3:hover, a.ex3:active {background: #e0b000;}
+			a.ex5:hover, a.ex5:active {text-decoration: underline; color: #e0bc75;}
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			/*HEADER MENUS, PROGRESSBAR STARS HERE*/
+
+			.header {
+			  position: fixed;
+			  top: 0;
+			  z-index: 1;
+			  width: 100%;
+			  background-color: #000000;
+			}
+
+			.header h4{
+			  text-align: right;
+			  font-family: Arial;
+			  font-size: 17px;
+			}
+
+			.progress-container {
+			  width: 100%;
+			  height: 4px;
+			  background: #222;
+			}
+
+			.progress-bar {
+			  height: 4px;
+			  background: #4caf50;
+			  width: 0%;
+			}
+			
+			/*FOOTER */
+			
+			.footer {
+			  position: fixed;
+			  bottom: 0;
+			  z-index: 1;
+			  width: 100%;
+			  background-color: #000000;
+			}
+
+			/*FOOTER */
+			
+			
+			/*HEADER MENUS, PROGRESSBAR ENDS HERE*/
+
+			.content {
+				margin: 0 auto;
+				width: 100%;
+				max-width: 960px;
+				padding: 0 15px;
+				color: #e0bc75;
+			}
+
+			p {
+				margin: 0 0 30px 0;
+				font-size: 20px;
+				line-height: 1.5;
+			}
+
+			.fullscreen-bg {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				overflow: hidden;
+				z-index: -100;
+			}
+
+			.fullscreen-bg__video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			@media (min-aspect-ratio: 16/9) {
+				.fullscreen-bg__video {
+					height: 300%;
+					top: -100%;
+				}
+			}
+
+			@media (max-aspect-ratio: 16/9) {
+				.fullscreen-bg__video {
+					width: 300%;
+					left: -100%;
+				}
+			}
+
+			@media (max-width: 767px) {
+				.fullscreen-bg {
+					background: url('../res/backpic.png') center center / cover no-repeat;
+				}
+
+				.fullscreen-bg__video {
+					display: none;
+				}
+			}
+
+	</style>
+<!--Full Screen Video, Menus and ScrollBar  Starts-->
+
+<!--ScrollBar Script Starts-->
+<script>
+// When the user scrolls the page, execute myFunction 
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
+</script>	
+<!--ScrollBar Script Ends-->	
+	
+	
+<body>
+<!--Header Menus Starts Here-->
+	<div class="header">
+		
+			<h4>
+				<font color="#ffffff">
+					| <a class="ex5" href='/'><font color="#ffffff">Home</font></a> | &nbsp;&nbsp;&nbsp;&nbsp; | <a class="ex5" href='/blog/'><font color="#ffffff">Blog</font></a> | &nbsp;&nbsp;&nbsp;&nbsp; | <a class="ex5" href='/contact/'><font color="#ffffff">Contact</font> </a>|&nbsp;&nbsp;
+				</font>
+			</h4>
+		<div class="progress-container">
+			<div class="progress-bar" id="myBar"></div>
+		</div> 
+
+	</div>
+<!--Header Menus Ends Here-->
+
+
+
+<!--Callin BackGround Video Codes Starts Here-->
+    <div class="fullscreen-bg">
+        <video loop muted autoplay poster="{% static 'personal/custom/backpic.png' %}" class="fullscreen-bg__video">
+            <source src="{% static 'personal/custom/backvid.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+<!--Callin BackGround Video Codes Ends Here-->
+
+<br><br>
+
+<div class="content">
+<!--Round/Glow border styling code starts here-->
+	<style>
+		.rbordr {
+		border-radius: 25px;
+		border: 2px solid #73AD21;
+		height:130px;
+		width:270px;
+		line-height:70px;
+		text-align:center;
+		border:2px solid #dd;
+		border-radius: 3px;
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+		transition: all 200ms ease-out;
+		}
+		.rbordr:hover {
+		box-shadow: 0 0 20px rgba(35, 173, 278, 1);
+		}
+	</style>
+<!--Round/Glow border styling code ends here-->
+
+<!--Heading Styles Code starts here-->
+	<style>
+			#headline {
+			   color: #e0bc75;
+			   font-size: 30px;	
+				text-shadow: 2px 2px 5px #3fe162;
+				}
+	</style>
+<!--Heading Styles Code ends here-->
+
+
+<br><br>
+<center>
+	<div class="rbordr"><img src ="{% static 'personal/custom/me.jpg' %}"></div>
+	<br>
+	<p id="headline">
+		<b>
+			<span style="font-family: &quot;verdana&quot; , sans-serif;">
+				Passionate IT Professional & Programmer
+			</span>
+		</b>
+	</p>
+</center>
+
+{% block content %}
+{% endblock %}	
+<br><br><br>
+</div>
+
+
+<!--Chat Window Starts Here-->
+<script src="https://uhchat.net/code.php?f=0ef141"></script>
+<!--Chat Window Ends Here-->
+
+<footer>
+	<div class="footer" style='margin-left:15px'>
+		<font face="arial">
+			<b>
+				<p>				
+					<a class="ex3" href="mailto:mohan.2kit@gmail.com" target="blank"><font color="#ffffff">Contact</font></a> | <a class="ex3"  href="https://github.com/itsmanu4u" target="blank"><font color="#ffffff">GitHub</font></a> | <a class="ex3" href="https://twitter.com/Smiling_Manu" target="blank"><font color="#ffffff">Twitter</font></a> | <a class="ex3"  href="https://plus.google.com/u/0/100363836311199198918" target="blank"><font color="#ffffff">Google+</font></a>
+				</p>
+			</b>
+		</font>
+	</div>
+</footer>
+
+
+</body>
+</html>
